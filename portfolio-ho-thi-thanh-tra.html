@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hồ Thị Thanh Trà | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            font-family: "Inter", Arial, sans-serif;
+            color: #1d1d1f;
+            line-height: 1.7;
+        }
+
+        body {
+            margin: 0;
+            background: #f8f8fb;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            padding: 60px 8vw 40px;
+            background: #ffffff;
+            border-bottom: 1px solid #e7e8ee;
+        }
+
+        .hero-media {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-media img {
+            width: 320px;
+            height: 420px;
+            border-radius: 24px;
+            object-fit: cover;
+            border: 6px solid #e4e6f1;
+            box-shadow: 0 25px 60px rgba(15, 23, 42, 0.15);
+        }
+
+        .hero-content h1 {
+            margin: 0 0 12px;
+            font-family: "Playfair Display", serif;
+            font-size: clamp(36px, 4vw, 52px);
+            color: #1b2540;
+        }
+
+        .hero-content h3 {
+            margin: 0 0 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 500;
+            color: #7e89a8;
+        }
+
+        .hero-content p {
+            margin-bottom: 28px;
+            max-width: 520px;
+            color: #4b5567;
+            font-size: 17px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border-radius: 48px;
+            padding: 14px 32px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: #2f3c7e;
+            color: #fff;
+            box-shadow: 0 12px 30px rgba(47, 60, 126, 0.32);
+        }
+
+        .btn-outline {
+            background: #ffffff;
+            border-color: #d4d8ea;
+            color: #2f3c7e;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        section {
+            background: #fff;
+            border-radius: 28px;
+            padding: 32px;
+            margin-top: -40px;
+            border: 1px solid #eef0f7;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        section+section {
+            margin-top: 32px;
+        }
+
+        section.soft-panel {
+            background: linear-gradient(150deg, #ffffff 0%, #f2f5ff 100%);
+        }
+
+        section.soft-panel::after {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            right: -80px;
+            bottom: -80px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 15%, rgba(240, 244, 255, 0));
+            pointer-events: none;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 28px;
+            color: #1d2547;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        h2::before {
+            content: "";
+            width: 6px;
+            height: 24px;
+            background: #f0b429;
+            position: absolute;
+            left: 0;
+            top: 6px;
+            border-radius: 999px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        .card {
+            background: #f7f9ff;
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid #e4e8f5;
+        }
+
+        ul {
+            padding-left: 18px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .stat-box {
+            flex: 1;
+            min-width: 180px;
+            background: #101828;
+            color: #fff;
+            border-radius: 20px;
+            padding: 22px 24px;
+        }
+
+        .stat-box strong {
+            display: block;
+            font-size: 34px;
+            margin-bottom: 6px;
+            font-family: "Playfair Display", serif;
+        }
+
+        .timeline {
+            border-left: 3px solid #d6ddfb;
+            padding-left: 24px;
+        }
+
+        .timeline-card {
+            background: #fff;
+            border: 1px solid #e8ebf7;
+            border-radius: 18px;
+            padding: 18px 24px;
+            box-shadow: 0 15px 40px rgba(15, 23, 42, 0.05);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #2f3c7e;
+            left: -32px;
+            top: 6px;
+        }
+
+        .timeline-item span {
+            display: inline-block;
+            font-weight: 600;
+            color: #2f3c7e;
+            margin-bottom: 6px;
+            letter-spacing: 0.04em;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .contact-card {
+            flex: 1;
+            min-width: 220px;
+            background: #fff;
+            border-radius: 18px;
+            border: 1px solid #e2e6f4;
+            padding: 18px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.05);
+        }
+
+        .contact-card strong {
+            color: #1d2547;
+        }
+
+        .tag-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #2f3c7e;
+            background: rgba(47, 60, 126, 0.1);
+            margin-bottom: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px;
+            color: #7b8194;
+            font-size: 14px;
+            border-top: 1px solid #e7e8ee;
+            background: #fff;
+        }
+
+        a {
+            color: #2f3c7e;
+            text-decoration: none;
+        }
+
+        .highlight-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+
+        .highlight-list li {
+            background: #fff4ea;
+            border-radius: 18px;
+            padding: 16px 18px;
+            border: 1px solid #ffd5ae;
+            font-weight: 600;
+            color: #9a4a00;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .photo-gallery figure {
+            margin: 0;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+            background: #000;
+            position: relative;
+        }
+
+        .photo-gallery img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-gallery figcaption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 12px 16px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 14px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+        }
+
+        @media (max-width: 720px) {
+            section {
+                padding: 24px;
+                margin-top: -40px;
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero">
+        <div class="hero-media">
+            <img src="img/z7234990909097_448b04d730139a41f62d277b0519db75.jpg" alt="Hồ Thị Thanh Trà">
+        </div>
+        <div class="hero-content">
+            <h3>Nhà sáng lập NewEra Retail Lab • Chiến lược gia tăng trưởng</h3>
+            <h1>Hồ Thị Thanh Trà</h1>
+            <p>Tôi hỗ trợ thương hiệu Việt chinh phục thị trường khu vực thông qua chiến lược tăng trưởng dựa trên dữ
+                liệu,
+                vận hành đa kênh tinh gọn và hệ sinh thái cộng đồng doanh nhân giàu kết nối.</p>
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="mailto:thanhtra.ho@newera.vn">Đặt lịch tư vấn</a>
+                <a class="btn btn-outline" href="https://www.linkedin.com/in/hothithanhtra" target="_blank">Xem hồ sơ
+                    LinkedIn</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="soft-panel">
+            <h2>Về tôi</h2>
+            <p>Tôi là doanh nhân lĩnh vực bán lẻ - F&B, 8 năm xây dựng và tối ưu hóa mô hình kinh doanh cho hơn 30
+                thương hiệu Việt.
+                Điểm mạnh của tôi là biến dữ liệu khách hàng thành chiến lược vận hành, gắn đội ngũ sáng tạo với kỷ luật
+                tài chính và
+                kết nối nguồn lực đầu tư phù hợp để tăng trưởng bền vững.</p>
+            <ul class="highlight-list">
+                <li>Thiết kế chiến lược tăng trưởng đa kênh</li>
+                <li>Huấn luyện đội ngũ vận hành thương mại số</li>
+                <li>Kết nối nhà đầu tư thiên thần & quỹ khu vực</li>
+                <li>Xây dựng cộng đồng nữ lãnh đạo trẻ</li>
+            </ul>
+        </section>
+
+        <section class="soft-panel">
+            <h2>Thông tin cá nhân</h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <p><strong>Ngày sinh:</strong> 12/05/1993</p>
+                    <p><strong>Cơ sở:</strong> Quận 1, TP.HCM & Singapore</p>
+                    <p><strong>Email:</strong> thanhtra.ho@newera.vn</p>
+                    <p><strong>Điện thoại:</strong> +84 908 123 456</p>
+                </div>
+                <div class="card">
+                    <p><strong>Tầm nhìn:</strong> Đồng hành cùng doanh nghiệp Việt chuyển đổi số và vươn ra thị trường
+                        khu vực bằng nền tảng dữ liệu.</p>
+                    <p><strong>Giá trị:</strong> Minh bạch - Tốc độ - Trải nghiệm khách hàng lấy con người làm trung
+                        tâm.</p>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-box">
+                    <strong>120%</strong>
+                    CAGR trung bình của các dự án do tôi dẫn dắt
+                </div>
+                <div class="stat-box">
+                    <strong>75+</strong>
+                    Đối tác chiến lược trong bán lẻ, F&B, công nghệ
+                </div>
+                <div class="stat-box">
+                    <strong>08</strong>
+                    Năm kinh nghiệm thực chiến & mentoring
+                </div>
+            </div>
+        </section>
+
+        <section class="soft-panel">
+            <h2>Sở thích & cộng đồng</h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Tạo cộng đồng</h3>
+                    <p>Điều phối CLB nữ lãnh đạo trẻ, mỗi quý tổ chức masterminds để chia sẻ bài học vận hành và gọi
+                        vốn.</p>
+                </div>
+                <div class="card">
+                    <h3>Khám phá nghệ thuật</h3>
+                    <p>Thu thập nghệ thuật đương đại, dùng cảm hứng thị giác để làm giàu concept cho chiến dịch thương
+                        hiệu.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="soft-panel">
+            <h2>Điểm mạnh & điểm yếu</h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Điểm mạnh</h3>
+                    <ul>
+                        <li>Tư duy chiến lược đa kênh, biến insight khách hàng thành trải nghiệm mua sắm đồng nhất.</li>
+                        <li>Khả năng kết nối đối tác và nhà đầu tư, tạo hệ sinh thái hỗ trợ tăng trưởng.</li>
+                        <li>Lãnh đạo đội nhóm linh hoạt, đặt chuẩn mực cao nhưng trao quyền mạnh mẽ.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Điểm yếu</h3>
+                    <ul>
+                        <li>Kỳ vọng cao dễ khiến tôi dành quá nhiều thời gian cho chi tiết nhỏ.</li>
+                        <li>Cân bằng giữa hoạt động cộng đồng và nghiên cứu thị trường vẫn cần tối ưu.</li>
+                        <li>Đang tăng tốc trau dồi kiến thức về thị trường quốc tế mới nổi.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="soft-panel">
+            <h2>Kinh nghiệm làm việc</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <span>2022 - hiện tại</span>
+                        <h3>CEO, NewEra Retail Lab</h3>
+                        <p>Xây dựng phòng thí nghiệm bán lẻ giúp 18 thương hiệu tăng trưởng 3 thị trường (VN, Thái,
+                            Singapore), tối ưu 22% tồn kho và chuẩn hóa vận hành dữ liệu.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <span>2019 - 2022</span>
+                        <h3>Giám đốc phát triển kinh doanh, Aurora Holdings</h3>
+                        <p>Dẫn dắt chiến lược omni-channel, tăng doanh thu trực tuyến gấp 3 lần, triển khai loyalty dựa
+                            trên AI phát hiện nhóm khách hàng trung thành mới.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <span>2016 - 2019</span>
+                        <h3>Tư vấn chuyển đổi số, Indep Consulting</h3>
+                        <p>Triển khai ERP & BI cho doanh nghiệp sản xuất, giảm 25% chi phí vận hành, cải thiện dự báo
+                            nhu cầu theo mùa vụ.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="soft-panel">
+            <h2>Kinh nghiệm học tập</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <span>2018 - 2020</span>
+                        <h3>MBA, Đại học Quốc tế TP.HCM</h3>
+                        <p>Chuyên ngành Quản trị chiến lược, luận văn về kiến trúc vận hành tăng trưởng bền vững cho
+                            doanh nghiệp F&B.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <span>2011 - 2015</span>
+                        <h3>Cử nhân Marketing, Đại học Kinh tế TP.HCM</h3>
+                        <p>Thành viên CLB Khởi nghiệp, giành giải Nhất cuộc thi Business Innovation 2014.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="soft-panel">
+            <h2>Hành trình qua ảnh</h2>
+            <div class="photo-gallery">
+                <figure>
+                    <img src="img/z7234990871093_2c9fd904fe70a53c2a79407311b6c424.jpg"
+                        alt="Thanh Trà trong buổi mentoring startup">
+                    <figcaption>Mentor chương trình tăng tốc khởi nghiệp</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/z7234990870582_d1611477e3d6aeb4ebfb72b9e411b6fd.jpg"
+                        alt="Thanh Trà trao đổi tại workshop nội bộ">
+                    <figcaption>Workshop xây dựng năng lực đội ngũ</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/z7234990871465_d63cc7d1196e7caa456d864477e16cf5.jpg"
+                        alt="Thanh Trà thuyết trình mô hình bán lẻ">
+                    <figcaption>Trình bày mô hình bán lẻ dữ liệu hóa</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/z7234990880903_4cd2387d5bc4436ea65c504176e5e2e7.jpg"
+                        alt="Thanh Trà phát biểu tại sự kiện bán lẻ">
+                    <figcaption>Chia sẻ chiến lược bán lẻ tại Retail Summit 2024</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/z7234990883543_36cf804eb9866a9bd51a58b5e4ad013f.jpg"
+                        alt="Thanh Trà gặp gỡ nhà đầu tư tại Singapore">
+                    <figcaption>Kết nối nhà đầu tư tại Singapore Fintech Hub</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/z7234990887673_bdfea799460668528e20cc00a025ab49.jpg"
+                        alt="Thanh Trà tham quan concept store">
+                    <figcaption>Khảo sát concept store trước khi mở rộng</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/z7234990893170_20aa76a2c88a102221c78ce66d1382d0.jpg" alt="Thanh Trà gặp gỡ đối tác">
+                    <figcaption>Kết nối nhà đầu tư & đối tác khu vực</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/z7234990897775_c5c6802e27a398801198fcfb1cf299d1.jpg"
+                        alt="Thanh Trà cùng đội ngũ trong phòng lab">
+                    <figcaption>Kiểm thử trải nghiệm bán lẻ tại lab NewEra</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/z7234990898299_0cd2d3e662e8888fcdfeaea9a88aa295.jpg"
+                        alt="Thanh Trà phỏng vấn truyền thông">
+                    <figcaption>Trò chuyện truyền thông về hành trình khởi nghiệp</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/z7234990899951_685e6109fd24f5b7bb10d1af9c5db61c.jpg"
+                        alt="Thanh Trà thăm nhà máy đối tác">
+                    <figcaption>Đánh giá vận hành nhà máy đối tác F&B</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/z7234990907400_1e11e3fe5203b3f61fb89be7a2c3e11a.jpg"
+                        alt="Thanh Trà tại sự kiện kết nối cộng đồng">
+                    <figcaption>Kết nối cộng đồng nữ lãnh đạo trẻ</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/z7234990907722_dd32066a411086c82bf4b0cbcc37eb06.jpg"
+                        alt="Thanh Trà trao đổi cùng đội ngũ">
+                    <figcaption>Làm việc cùng đội ngũ NewEra Retail Lab</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/z7234990861875_2f6cfc54ce0bcda9bc415cda4c32d896.jpg"
+                        alt="Thanh Trà ký kết hợp tác quốc tế">
+                    <figcaption>Ký kết hợp tác cùng đối tác khu vực</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/z7234990919756_0b5036305496cc47e72b421c0434f74c.jpg"
+                        alt="Thanh Trà tại chương trình cố vấn doanh nhân">
+                    <figcaption>Đồng hành cố vấn chương trình doanh nhân trẻ</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="soft-panel">
+            <h2>Liên hệ</h2>
+            <div class="contact-row">
+                <div class="contact-card">
+                    <span class="tag-pill">Email</span>
+                    <strong>Liên hệ chính</strong>
+                    <a href="mailto:thanhtra.ho@newera.vn">thanhtra.ho@newera.vn</a>
+                </div>
+                <div class="contact-card">
+                    <span class="tag-pill">Điện thoại</span>
+                    <strong>Hỗ trợ dự án</strong>
+                    <p>+84 908 123 456</p>
+                </div>
+                <div class="contact-card">
+                    <span class="tag-pill">LinkedIn</span>
+                    <strong>Professional Network</strong>
+                    <a href="https://www.linkedin.com/in/hothithanhtra"
+                        target="_blank">linkedin.com/in/hothithanhtra</a>
+                </div>
+                <div class="contact-card">
+                    <span class="tag-pill">Facebook</span>
+                    <strong>Cộng đồng & cập nhật</strong>
+                    <a href="https://www.facebook.com/tra.ho.54390" target="_blank">facebook.com/tra.ho.54390</a>
+                </div>
+                <div class="contact-card">
+                    <span class="tag-pill">Văn phòng</span>
+                    <strong>Saigon Centre</strong>
+                    <p>Tầng 18, Saigon Centre, Quận 1, TP.HCM</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2025 Hồ Thị Thanh Trà · Luôn sẵn sàng cho những dự án tăng trưởng.
+    </footer>
+</body>
+
+</html>
